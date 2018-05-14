@@ -1,0 +1,63 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<html>
+<head>
+
+    <title>MySkillsList</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+
+<body>
+
+<nav th:replace="components/globalNavbar :: navbar"></nav>
+
+<div class="container">
+    <div th:replace="components/globalImage :: image"></div>
+    <div class="row">
+        <div th:replace="components/globalSidebar :: sidebar"></div>
+
+        <div class=" col-xs-12 col-md-9">
+            <div class="someinfo row">
+                <form th:action="@{/getUserDetails}" th:method="post">
+                    <label>If you want to check your actual details you have to type your user ID or details ID </label>
+                    <label for="inputUserId" class="sr-only">User ID</label>
+                    <input th:value="${userId}" type="text" name="userId" id="inputUserId"
+                           class="form-control formfield" placeholder="User ID">
+                    <label for="inputDetailId" class="sr-only">Details ID</label>
+                    <input th:value="${detailsId}" type="text" id="inputDetailId" name="detailsId"
+                           class="form-control formfield" placeholder="Details ID" autofocus>
+                    <button type="submit" class="btn btn-md btn-primary form-control formfield">Check details</button>
+                </form>
+                <form th:action="@{/editUserDetails}" th:method="post">
+                    <label> Enter your new details </label>
+                    <label> First name: </label>
+                    <input th:value="${detailsNewDTO.firstName}" name="firstName" type="text"
+                           class="form-control formfield" placeholder="First name" required>
+                    <label> Last name: </label>
+                    <input th:value="${detailsNewDTO.lastName}" name="lastName" type="text"
+                           class="form-control formfield" placeholder="Last name" required>
+                    <label> University: </label>
+                    <input th:value="${detailsNewDTO.university}" name="university" type="text"
+                           class="form-control formfield" placeholder="University">
+                    <label> Field of study: </label>
+                    <input th:value="${detailsNewDTO.fieldOfStudy}" name="fieldOfStudy" type="text"
+                           class="form-control formfield" placeholder="Field of study">
+                    <label> Year of study: </label>
+                    <input th:value="${detailsNewDTO.yearOfStudy}" name="yearOfStudy" type="number"
+                           class="form-control formfield" placeholder="Year of study">
+                    <button type="submit" class="btn btn-md btn-primary form-control formfield">Update details</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

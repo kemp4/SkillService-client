@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<html>
+<head>
+
+    <title>MySkillsList</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" th:fragment="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+            </button>
+            <a class="navbar-brand" href="#">MySkillsList</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{/}">Home</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Menu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/showAllSkills}">Show all skills</a></li>
+                        <li><a th:href="@{/searchUser}">Search profile</a></li>
+                        <li><a th:href="@{/editUserSkills}">Show user skills</a></li>
+                        <li><a th:href="@{/editUserDetails}">Edit user details</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right profileInfo ">
+                <li><div class="row logged-as loggedInfo"><div class="col-xs-12"><p >Logged as:</p></div></div></li>
+                <li>
+                    <div class="row logged-as">
+                        <div class="col-xs-4"><p sec:authentication="name"></p></div>
+                        <div class="col-xs-3"><img class="logoimg" th:src="@{/images/logo.jpg}"/></div>
+                        <div class=" col-xs-5">
+                            <form th:action="@{/logout}" th:method="post">
+                                <button type="submit"  class="btn btn-xs btn-default"> Log out</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,66 @@
+.mainimg{
+  padding: 1%;
+  padding-top: 70px;
+  width:100%;
+  height:100%;
+}
+.myclas{
+  background-color: #234;
+  padding: 1%;
+  border-width: 5px;
+  border-color: black;
+}
+.someimg{
+  padding: 1%;
+  width:100%;
+  height:100%;
+}
+.someinfo{
+  padding: 1%;
+  margin: 1%;
+  width:100%;
+  height:100%;
+  background-color: #234;
+}
+.someinfotitle{
+
+  text-align: center;
+  background-color: #123;
+
+}
+.logoimg{
+height: 30px;
+
+}
+.myform{
+margin-top: 100px;
+}
+.formfield{
+  margin-top : 2%;
+  margin-bottom : 2%;
+}
+
+.skill-field{
+  text-align: center;
+
+}
+
+.newSkillRow{
+  padding-top: 25px;
+}
+.profileInfo{
+  width: 30%;
+}
+.logged-as{
+  padding-top:15px;
+  padding-bottom:15px;
+  background-color: #1d2f43;
+}
+.loggedInfo{
+  margin-right: 20px;
+  padding-right: 10px;
+}
+/*.profile-image{*/
+  /*width: 30px;*/
+  /*height: 30px;*/
+/*}*/

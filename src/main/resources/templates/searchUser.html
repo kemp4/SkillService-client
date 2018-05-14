@@ -1,0 +1,97 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<html>
+<head>
+
+    <title>MySkillsList</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+
+<body>
+
+<nav th:replace="components/globalNavbar :: navbar"></nav>
+
+<div class="container">
+    <div th:replace="components/globalImage :: image"></div>
+    <div class="row">
+        <div th:replace="components/globalSidebar :: sidebar"></div>
+        <div class="col-md-9">
+
+            <table class="table" th:if="${detailsFullDTO.id} != null">
+                <tbody>
+                <tr>
+                    <th>Field of study</th>
+                    <th th:utext="${detailsFullDTO.fieldOfStudy}">study</th>
+                </tr>
+                <tr>
+                    <th>First name</th>
+                    <td th:utext="${detailsFullDTO.firstName}"> firstname</td>
+                </tr>
+                <tr>
+                    <th>Details ID</th>
+                    <td th:utext="${detailsFullDTO.id}">id</td>
+                </tr>
+                <tr>
+                    <th>University</th>
+                    <td th:utext="${detailsFullDTO.university}">1</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <th th:utext="${detailsFullDTO.user.email}">some@email.com</th>
+                </tr>
+                <tr>
+                    <td>User name</td>
+                    <td th:utext="${detailsFullDTO.user.name}"> username</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td th:utext="${detailsFullDTO.user.password}">password</td>
+                </tr>
+                <tr>
+                    <td>User ID</td>
+                    <td th:utext="${detailsFullDTO.user.id}">1</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <label th:if="${detailsFullDTO.id} != null">Skills List:</label>
+
+            <table class="table table-striped" th:if="${detailsFullDTO.id} != null">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Skill name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="skill : ${detailsFullDTO.user.skills}">
+                    <td th:text="${skill.id}">1</td>
+                    <td th:text="${skill.skillName}">fishing</td>
+                </tr>
+                </tbody>
+            </table>
+            <form th:if="${detailsFullDTO.id} != null" th:action="@{/editUserSkills}" method="get">
+                <input class="hidden" type="text" th:value="${detailsFullDTO.user.id}" name="userId">
+                <button type="submit" class="btn btn-lg btn-primary btn-block formfield">Edit this user skills</button>
+            </form>
+
+            <form th:if="${detailsFullDTO.id} == null" th:action="@{/searchUser}" method="post">
+                <label for="userId" class="sr-only">name</label>
+                <input th:value="${userId}" type="text" id="userId" name="userId" class="form-control formfield"
+                       placeholder="User ID" required autofocus>
+                <button type="submit" class="btn btn-lg btn-primary btn-block formfield">Search user by ID</button>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

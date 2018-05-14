@@ -1,0 +1,66 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>MySkillsList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+            </button>
+            <a class="navbar-brand" href="home.html">My Skills List</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+
+    <form class="form-signin myform" th:action="@{/login}" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">name</label>
+        <input type="text" id="username" name="username" class="form-control formfield" placeholder="Username" required
+               autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control formfield" placeholder="Password"
+               required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block formfield">
+        Sign in
+        </button>
+    </form>
+
+    <form th:action="@{/signup}" method="get">
+        <button type="submit" href="/signup" class="btn btn-lg btn-info btn-block formfield">
+        If you dont have account please Sign Up
+        </button>
+    </form>
+    <form th:action="@{/changeApi}" method="get">
+        Currently using API URI: <label th:utext="${apiURI}">URI </label>
+        <button type="submit" href="/signup" class="btn btn-lg btn-info btn-block formfield">
+            change endpoint URI
+        </button>
+    </form>
+
+</div>
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+
+
+</html>

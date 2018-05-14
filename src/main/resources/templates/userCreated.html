@@ -1,0 +1,66 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>MySkillsList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+            </button>
+            <a class="navbar-brand" href="home.html">My Skills List</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <h2>SignUP Succesful</h2>
+    <p>Please save your credentials and ID somewhere</p>
+    <table class="table" >
+        <tbody>
+        <tr>
+            <th>Email</th>
+            <th th:utext="${userCreated.email}">some@email.com</th>
+        </tr>
+        <tr>
+            <td>User name</td>
+            <td th:utext="${userCreated.name}"> username
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td th:utext="${userCreated.password}">password</td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td th:utext="${userCreated.id}">1
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form th:action="@{/}" method="get">
+        <button type="submit" class="btn btn-lg btn-primary btn-block formfield"/>Sign In
+    </form>
+</div>
+
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+
+
+</html>

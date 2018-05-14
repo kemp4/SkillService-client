@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<html>
+<head>
+
+    <title>MySkillsList</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+
+<body>
+<nav th:replace="components/globalNavbar :: navbar"></nav>
+<div class="container">
+    <div th:replace="components/globalImage :: image"></div>
+    <div class="row">
+        <div th:replace="components/globalSidebar :: sidebar"></div>
+
+        <div class=" col-xs-12 col-md-9">
+            <div class="someinfo row">
+                <div class="skill-field col-md-6 col-sm-12  someinfotitle">error occurs</div>
+                <div class="skill-field col-md-6 col-sm-12 "><p th:text="${errorMessage}"> 12</p></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

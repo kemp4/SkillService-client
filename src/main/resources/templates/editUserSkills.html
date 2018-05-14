@@ -1,0 +1,112 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<html>
+<head>
+
+    <title>MySkillsList</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+
+<body>
+<nav th:replace="components/globalNavbar :: navbar"></nav>
+
+<div class="container">
+    <div th:replace="components/globalImage :: image"></div>
+    <div class="row">
+        <div th:replace="components/globalSidebar :: sidebar"></div>
+        <div class="col-md-9">
+            <br><br><br>
+            <form th:if="${userFullDTO.id} != null" th:action="@{/editUserSkills}" th:object="${saveSkillsRequest}"
+                  method="post">
+                <!--<div th:each="skill : *{skills}">-->
+                <!--<input type="checkbox" th:field="*{skills}" th:value="${skill.skillName}" />-->
+                <!--<label th:text="${skill.skillName}">example</label>-->
+                <!--</div>-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="blog-title" th:text="${userFullDTO.name +' skills list'}">user skills</h1>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Skill name</th>
+                        <th scope="col">Option</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="skill : ${userFullDTO.skills}">
+                        <td th:text="${skill.id}">1</td>
+                        <td th:text="${skill.skillName}">fishing</td>
+                        <td>
+
+                            <input type="checkbox" name="active" class="userSkillChechkbox" th:field="*{skillsIds}"
+                                   th:value="${skill.id}"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="blog-title">Other skills</h1>
+                    </div>
+                    <!--<div class="col-md-12">-->
+                        <!--<input type="text" class="form-control" id="filterId" onkeydown="myFilter()">-->
+                    <!--</div>-->
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Skill name</th>
+                        <th scope="col">Option</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="skill : ${skillsList}">
+                        <td th:text="${skill.id}">1</td>
+                        <td class="otherSkill" th:text="${skill.skillName}">fishing</td>
+                        <td>
+                            <input type="checkbox" th:field="*{skillsIds}" th:value="${skill.id}"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <input class="hidden" type="text" name="userId" th:field="*{userId}" th:value="${userId}"/>
+                <button class="btn btn-primary form-control" type="submit">save chosen skills</button>
+            </form>
+
+
+            <!--<form th:if="${user.id} != null" th:action="@{/editUserSkills}" method="get">-->
+            <!--<label>Skills List:</label>-->
+
+            <!--<table class="table table-striped" th:if="${user.id} != null">-->
+
+            <!--<button type="submit" class="btn btn-lg btn-primary btn-block formfield">Edit this user skills</button>-->
+            <!--</form>-->
+
+            <form th:if="${userFullDTO.id} == null" th:action="@{/editUserSkills}" method="get">
+                <label for="userId" class="sr-only">name</label>
+                <input th:value="${userId}" type="text" id="userId" name="userId" class="form-control formfield"
+                       placeholder="User ID" required autofocus>
+                <button type="submit" class="btn btn-lg btn-primary btn-block formfield">Search user by ID</button>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/myjs.js}"></script>
+</body>
+</html>

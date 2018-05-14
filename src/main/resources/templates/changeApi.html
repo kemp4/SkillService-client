@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>MySkillsList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/mytemplate.css}"/>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            </button>
+            <a class="navbar-brand" href="home.html">My Skills List</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <form class="form-signin myform" th:action="@{/changeApi}" method="post">
+        <label>You are trying to log in into API </label>
+        <label th:utext="${apiURI}"> apiname </label>
+
+        <select th:value="${apiURI}" class="form-control formfield" name="apiURI">
+            <option value="http://localhost:8080/">http://localhost:8080/</option>
+            <option value="http://51.144.236.66/">http://51.144.236.66/</option>
+        </select>
+        <button type="submit" class="btn btn-lg btn-primary btn-block formfield">change API source</button>
+    </form>
+</div>
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+
+
+
+</html>
